@@ -1,13 +1,13 @@
 import Image from "next/image";
-import buttonlogin from "./compondents/buttonlogin";
-
+import ButtonLogin from "./compondents/buttonlogin";
 export default function Home() {
+  const isLoggedIn = false;
   return (
     <main>
       <div>
         <h1>Hello World</h1>
-      </div>
-      <buttonlogin>Login</buttonlogin>
+      </div>{" "}
+      <ButtonLogin isLoggedIn={isLoggedIn}>Login</ButtonLogin>{" "}
     </main>
   );
 }
