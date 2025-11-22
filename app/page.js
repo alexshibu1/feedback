@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import buttonlogin from "./compondents/buttonlogin";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <div>
         <h1>Hello World</h1>
       </div>
-      <Link href="/dashboard">Dashboard fix</Link>
+      <buttonlogin>Login</buttonlogin>
     </main>
   );
 }
