@@ -18,6 +18,10 @@
 
 body {
 }
+.title {
+  color: red;
+  font-size: 40px;
+}
 
 @layer utilities {
   .text-balance {
