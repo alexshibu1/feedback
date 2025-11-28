@@ -1,22 +1,23 @@
 import Link from "next/link";
 
-const ButtonLogin = (props) => {
-  if (props.isLoggedIn) {
-    return (
-      <Link href="/dashboard" className="btn btn-primary">
-        Dashboard
-      </Link>
-    );
-  } else {
+const ButtonLogin = ({ isLoggedIn, name, extraStyle }) => {
+  if (isLoggedIn) {
     return (
       <Link
-        href="/login"
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        href="/dashboard"
+        className={`btn btn-primary ${extraStyle ? extraStyle : ""}`}
       >
-        Login
+        Welcome Back {name}
       </Link>
     );
   }
+
+  // Plain text button style
+  return (
+    <button className="!bg-transparent !border-none !p-0 text-gray-900 hover:text-gray-700 text-base font-normal cursor-pointer shadow-none">
+      Login
+    </button>
+  );
 };
 
 export default ButtonLogin;
