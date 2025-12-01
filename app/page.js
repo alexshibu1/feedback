@@ -1,4 +1,7 @@
 import ButtonLogin from "./compondents/buttonlogin";
+import FaqListener from "./compondents/faqlistener";
+import Image from "next/image";
+import productDemo from "@/assets/productDemo.jpeg";
 
 export default function Home() {
   const isLoggedIn = false;
@@ -17,29 +20,47 @@ export default function Home() {
       <div className="bg-base-200">
         <section className="max-w-3xl mx-auto flex justify-between items-center px-8 py-2">
           <div className="font-bold ">ideaBox</div>
-          <div className="space-x-4 text-red-500 max-md:hidden">
-            <a className="link link-hover">Pricing</a>
-            <a className="link link-hover"> FAQ</a>
+          <div className="space-x-4 text-primary max-md:hidden">
+            <a className="link link-hover" href="#pricing">
+              Pricing
+            </a>
+            <a className="link link-hover" href="#faq">
+              {" "}
+              FAQ
+            </a>
           </div>
           <ButtonLogin isLoggedIn={isLoggedIn} />
         </section>
       </div>
-      <section className="text-center py-32 p-8 max-w-3xl mx-auto">
-        <div>
-          <h1 className="text-5xl font-bold mb-6 text-gray-900 lg:text-6xl">
-            {greeting1}
-          </h1>
-        </div>
-        <div className="mb-6 text-lg text-gray-500">
-          <h2>You can share your pain points directly with Alex</h2>
-        </div>
-        <div className="mt-8">
-          <ButtonLogin isLoggedIn={isLoggedIn} />
+      {/* Hero Section - Text Left, Image Right */}
+      <section className="py-32 p-8 max-w-6xl mx-auto">
+        {/* Flex Container: Stacked on mobile, side-by-side on desktop */}
+        <div className="flex flex-col md:flex-row items-center gap-8">
+          {/* Left Side: Text Content */}
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-5xl font-bold mb-6 text-gray-900 lg:text-6xl">
+              {greeting1}
+            </h1>
+            <div className="mb-6 text-lg text-gray-500">
+              <h2>You can share your pain points directly with Alex</h2>
+            </div>
+            <div className="mt-8">
+              <ButtonLogin isLoggedIn={isLoggedIn} />
+            </div>
+          </div>
+
+          {/* Right Side: Product Image */}
+          <div className="flex-1">
+            <Image
+              src={productDemo}
+              alt="productDemo"
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
         </div>
       </section>
-
       {/* pricing section */}
-      <section className="bg-base-200 ">
+      <section className="bg-base-200 " id="pricing">
         <div className="py-32 p-8 max-w-3xl mx-auto">
           <p className="text-center text-xl purple-500 color-primary mb-6 text-primary">
             Pricing
@@ -78,6 +99,46 @@ export default function Home() {
             </ul>
             <ButtonLogin isLoggedIn={true} name={name} extraStyle="w-full" />
           </div>
+        </div>
+      </section>
+      {/* FAQ section */}
+      <section className="bg-base-200" id="faq">
+        <div className="py-32 p-8 max-w-3xl mx-auto">
+          <p className="text-sm uppercase text-center mb-6 text-primary">FAQ</p>
+          <h2 className="text-3xl lg:text-4xl font-extrabolded mb-12 text-center">
+            Frequently Asked Questions
+          </h2>
+          <ul className="space-y-4 max-w-2xl mx-auto">
+            {[
+              {
+                question: "What is the price of the product?",
+                answer: "The price is $19 per month.",
+              },
+              {
+                question: "Can I cancel anytime?",
+                answer:
+                  "Yes, you can cancel your subscription at any time with no penalties.",
+              },
+              {
+                question: "What features are included?",
+                answer:
+                  "You get unlimited boards, customer feedback collection, admin dashboard, and 24/7 support.",
+              },
+              {
+                question: "Do you offer refunds?",
+                answer:
+                  "We offer a 30-day money-back guarantee if you're not satisfied.",
+              },
+            ].map((qa) => {
+              return (
+                <FaqListener
+                  key={qa.question}
+                  question={qa.question}
+                  answer={qa.answer}
+                />
+              );
+            })}
+          </ul>
         </div>
       </section>
     </main>

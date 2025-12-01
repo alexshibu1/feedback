@@ -19,12 +19,6 @@
 body {
 }
 .title {
-  color: red;
+  color: var(--primary);
   font-size: 40px;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }
