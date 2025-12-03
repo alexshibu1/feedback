@@ -6,7 +6,7 @@ const ButtonLogin = ({ isLoggedIn, name, extraStyle }) => {
     return (
       <Link
         href="/dashboard"
-        className={`btn btn-primary ${extraStyle ? extraStyle : ""}`}
+        className={`btn btn-primary text-white ${extraStyle ? extraStyle : ""}`}
       >
         Welcome Back {name}
       </Link>
