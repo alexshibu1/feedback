@@ -2,10 +2,10 @@ import ButtonLogin from "./compondents/buttonlogin";
 import FaqListener from "./compondents/faqlistener";
 import Image from "next/image";
 import productDemo from "@/assets/productDemo.jpeg";
+import { auth } from "@/auth";
 
-export default function Home() {
-  const isLoggedIn = false;
-  const name = "alex";
+export default async function Home() {
+  const session = await auth();
 
   const pricingFeatures = [
     "Collect customer feedback",
@@ -13,7 +13,7 @@ export default function Home() {
     "Admin dashboard",
     "24/7 support",
   ];
-  const greeting1 = `Hello ${isLoggedIn ? name : "there"}`;
+  const greeting1 = `Hello ${session.user.name || "there"}`;
 
   return (
     <main>
@@ -29,7 +29,7 @@ export default function Home() {
               FAQ
             </a>
           </div>
-          <ButtonLogin isLoggedIn={isLoggedIn} />
+          <ButtonLogin session={session} />
         </section>
       </div>
       {/* Hero Section - Text Left, Image Right */}
@@ -45,7 +45,7 @@ export default function Home() {
               <h2>You can share your pain points directly with Alex</h2>
             </div>
             <div className="mt-8">
-              <ButtonLogin isLoggedIn={isLoggedIn} />
+              <ButtonLogin session={session} />
             </div>
           </div>
 
@@ -62,10 +62,8 @@ export default function Home() {
       {/* pricing section */}
       <section className="bg-base-200 " id="pricing">
         <div className="py-32 p-8 max-w-3xl mx-auto">
-          <p className="text-center text-xl purple-500 color-primary mb-6 text-primary">
-            Pricing
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-extrabolded mb-12 text-center">
+          <p className="text-center text-xl mb-6 text-primary">Pricing</p>
+          <h2 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
             We making pircing simple
           </h2>
           <div className="p-8 bg-white w-96 rounded-3xl mx-auto shadow-lg">
@@ -97,7 +95,7 @@ export default function Home() {
                 );
               })}
             </ul>
-            <ButtonLogin isLoggedIn={true} name={name} extraStyle="w-full" />
+            <ButtonLogin session={session} extraStyle="w-full" />
           </div>
         </div>
       </section>
@@ -105,7 +103,7 @@ export default function Home() {
       <section className="bg-base-200" id="faq">
         <div className="py-32 p-8 max-w-3xl mx-auto">
           <p className="text-sm uppercase text-center mb-6 text-primary">FAQ</p>
-          <h2 className="text-3xl lg:text-4xl font-extrabolded mb-12 text-center">
+          <h2 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
             Frequently Asked Questions
           </h2>
           <ul className="space-y-4 max-w-2xl mx-auto">
