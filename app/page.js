@@ -13,7 +13,7 @@ export default async function Home() {
     "Admin dashboard",
     "24/7 support",
   ];
-  const greeting1 = `Hello ${session.user.name || "there"}`;
+  const greeting1 = `Hello ${session?.user?.name || "there"}`;
 
   return (
     <main>
