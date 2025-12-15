@@ -1,7 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 const FormNewBoard = () => {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -27,6 +30,8 @@ const FormNewBoard = () => {
       if (response.ok) {
         setSuccess(true);
         setName(""); // Clear the form
+        // Refresh server components to update board count
+        router.refresh();
         // Auto-hide success message after 3 seconds
         setTimeout(() => setSuccess(false), 3000);
       } else {
