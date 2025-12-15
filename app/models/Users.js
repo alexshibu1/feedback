@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+// Import Board to ensure it's registered before Users schema references it
+import "./Board";
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -15,7 +17,7 @@ const userSchema = new mongoose.Schema({
   },
   boards: [
     {
-      tpye: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Board",
     },
   ],

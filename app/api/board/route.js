@@ -24,7 +24,7 @@ export async function POST(req) {
     const board = await Board.create({ name: body.name, userId: user._id });
     user.boards.push(board._id);
     await user.save();
-    return NextResponse.json({});
+    return NextResponse.json(board);
   } catch (e) {
     return NextResponse.json({ message: e.message }, { status: 500 });
   }
