@@ -9,7 +9,6 @@ const ButtonDeleteBoard = ({ boardid }) => {
   const router = useRouter();
 
   const handleDelete = async () => {
-    ``;
     setIsLoading(true);
     try {
       const response = await fetch(`/api/board?boardid=${boardid}`, {
@@ -19,16 +18,16 @@ const ButtonDeleteBoard = ({ boardid }) => {
       const data = await response.json();
 
       if (response.ok) {
-        // Refresh the dashboard and redirect
+        // Redirect to dashboard after successful deletion
         router.push("/dashboard");
-        router.refresh();
       } else {
         alert(data.message || "Failed to delete board");
+        setIsLoading(false);
+        setShowConfirm(false);
       }
     } catch (error) {
       console.error("Error deleting board:", error);
       alert("An error occurred while deleting the board");
-    } finally {
       setIsLoading(false);
       setShowConfirm(false);
     }

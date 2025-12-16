@@ -44,7 +44,7 @@ export default async function Dashboard() {
           <div className="mt-6">
             <h1 className="font-extrabold text-xl mb-4">
               {boards.length} {boards.length === 1 ? "Board" : "Boards"}
-            </h1>
+        </h1>
             {boards.length > 0 ? (
               <ul className="space-y-2">
                 {boards.map((board) => {
@@ -66,7 +66,7 @@ export default async function Dashboard() {
               </p>
             )}
           </div>
-        </section>
+      </section>
       </section>
     </main>
   );
