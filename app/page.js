@@ -1,4 +1,5 @@
 import ButtonLogin from "./compondents/buttonlogin";
+import ButtonCheckout from "./compondents/buttonnCheckout";
 import FaqListener from "./compondents/faqlistener";
 import Image from "next/image";
 import productDemo from "@/assets/productDemo.jpeg";
@@ -95,7 +96,11 @@ export default async function Home() {
                 );
               })}
             </ul>
-            <ButtonLogin session={session} extraStyle="w-full" />
+            {session ? (
+              <ButtonCheckout extraStyle="w-full" />
+            ) : (
+              <ButtonLogin session={session} extraStyle="w-full" />
+            )}
           </div>
         </div>
       </section>

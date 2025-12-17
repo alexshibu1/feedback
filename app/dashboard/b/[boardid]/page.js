@@ -9,8 +9,8 @@ import ButtonDeleteBoard from "@/app/compondents/buttondeleteboard";
 
 const getBoard = async (boardid) => {
   try {
-    await connectMongoose();
-    const session = await auth();
+  await connectMongoose();
+  const session = await auth();
 
     if (!session?.user?.id) {
       return null;
@@ -30,7 +30,7 @@ const getBoard = async (boardid) => {
       return null;
     }
 
-    return board;
+  return board;
   } catch (error) {
     console.error("Error fetching board:", error);
     return null;

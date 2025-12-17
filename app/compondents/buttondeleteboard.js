@@ -9,6 +9,8 @@ const ButtonDeleteBoard = ({ boardid }) => {
   const router = useRouter();
 
   const handleDelete = async () => {
+    if (isLoading) return;
+
     setIsLoading(true);
     try {
       const response = await fetch(`/api/board?boardid=${boardid}`, {
