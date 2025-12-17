@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import User from "@/app/models/Users";
-import Board from "@/app/models/Board";
 
 if (!process.env.MONGO_URL) {
   throw new Error('Invalid/Missing environment variable: "MONGO_URL"');
