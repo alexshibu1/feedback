@@ -43,7 +43,7 @@ export default async function PaymentSuccess() {
           {/* Additional Info */}
           <div className="bg-base-200 rounded-xl p-4 text-left">
             <p className="text-sm text-base-content/70">
-              <strong className="text-base-content">Whats next?</strong>
+              <strong className="text-base-content">What&apos;s next?</strong>
             </p>
             <ul className="mt-2 space-y-1 text-sm text-base-content/70 list-disc list-inside">
               <li>Your subscription is now active</li>
